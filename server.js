@@ -31,10 +31,12 @@ async function loadNodes() {
     await client.connect();
     db = client.db(CFG.dbName);
     const col = db.collection('nodes');
-    if ((await col.countDocuments()) === 0) {
-        const seed = JSON.parse(fs.readFileSync(CFG.seedFile, 'utf8'));
-        await col.insertMany(seed.map((s) => ({ ...s, systemMode: 'AUTO', activeProfile: null })));
-        console.log(`[sim] Seed DB riêng (${CFG.dbName}.nodes): ${seed.length} nút từ nodes.seed.json`);
+    const seed = JSON.parse(fs.readFileSync(CFG.seedFile, 'utf8'));
+    const existing = new Set((await col.find({}, { projection: { id: 1 } }).toArray()).map((d) => d.id));
+    const toAdd = seed.filter((s) => !existing.has(s.id));
+    if (toAdd.length) {
+        await col.insertMany(toAdd.map((s) => ({ ...s, systemMode: 'AUTO', activeProfile: null })));
+        console.log(`[sim] Thêm ${toAdd.length} nút mới vào DB riêng (${CFG.dbName}.nodes): ${toAdd.map((s) => s.id).join(', ')}`);
     }
     const docs = await col.find({}).sort({ id: 1 }).toArray();
     return docs.map(buildNode);

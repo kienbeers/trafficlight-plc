@@ -2982,5 +2982,158 @@
         ]
       }
     ]
+  },
+  {
+    "id": "PH-TTT-NH",
+    "name": "Phạm Hùng × Tôn Thất Thuyết × Nguyễn Hoàng",
+    "gatewayId": "GW-PH-TTT-NH",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Tôn Thất Thuyết",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Nguyễn Hoàng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
   }
 ]
