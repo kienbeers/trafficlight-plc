@@ -48,15 +48,20 @@ function buildNode(it) {
         const greenDirs = new Set();
         const greens = p.greens || (p.greenCodes || []).map((c) => ({ directionCode: c }));
         greens.forEach((g) => { const plc = codeToPlc.get(g.directionCode); if (plc) greenDirs.add(plc); });
-        return { index: i + 1, code: p.code || `P${i + 1}`, greenSec: p.greenSec || 20, yellowSec: p.yellowSec || 3, allRedSec: p.allRedSec || 2, greenDirs };
+        // greenSec khác nhau mỗi nút/pha (16..37s) → chu kỳ lệch nhau, không đồng bộ.
+        return { index: i + 1, code: p.code || `P${i + 1}`, greenSec: p.greenSec || (16 + Math.floor(Math.random() * 22)), yellowSec: p.yellowSec || 3, allRedSec: p.allRedSec || 2, greenDirs };
     });
     const activeProfile = it.activeProfile || { minGreen: 12, maxGreen: 60, yellow: 3, allRed: 2, lowQueue: 3, baseGreen: phases.map((p) => p.greenSec) };
+    // Bắt đầu ở pha + giây ngẫu nhiên → mỗi nút lệch pha, hiển thị khác nhau.
+    const startIdx = phases.length ? Math.floor(Math.random() * phases.length) : 0;
+    const sp = phases[startIdx];
+    const startElapsed = sp ? Math.floor(Math.random() * (sp.greenSec + sp.yellowSec + sp.allRedSec)) : 0;
     return {
         id: it.id, name: it.name, gatewayId: it.gatewayId || `GW-${it.id}`,
         dirsMeta: nd, dirs: dirsPlc, phases,
         sim: {
-            enabled: true, phaseIdx: 0, elapsed: 0, systemMode: it.systemMode || 'AUTO', hb: 0, pingCounter: 0, lastApproved: null,
-            activeProfile, traffic: nd.map(() => ({ q: 3 + Math.random() * 8 })),
+            enabled: true, phaseIdx: startIdx, elapsed: startElapsed, systemMode: it.systemMode || 'AUTO', hb: 0, pingCounter: 0, lastApproved: null,
+            activeProfile, traffic: nd.map(() => ({ q: 3 + Math.random() * 12 })),
         },
         lastStatus: null, lastStatusAt: 0, lastTraffic: null, lastTrafficAt: 0, cmdLog: [],
     };
