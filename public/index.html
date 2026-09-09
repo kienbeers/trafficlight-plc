@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gateway ảo — Quản lý</title>
+<style>
+  :root { --bg:#0f1216; --panel:#161b22; --panel2:#1c232c; --line:#2a323d; --text:#dfe6ee; --muted:#8b97a6;
+          --green:#2fbf6e; --yellow:#f0c419; --red:#e5484d; --off:#6b7280; --accent:#5aa0d6; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:13px/1.4 system-ui,Segoe UI,Roboto,sans-serif; }
+  header { display:flex; align-items:center; gap:14px; padding:12px 18px; border-bottom:1px solid var(--line); background:var(--panel); position:sticky; top:0; z-index:5; flex-wrap:wrap; }
+  header h1 { font-size:15px; margin:0; }
+  .pill { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .pill.ok { color:var(--green); border-color:#1f5b3c; } .pill.err { color:var(--red); border-color:#7a2b2b; }
+  .btn { font:inherit; cursor:pointer; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--panel2); color:var(--text); }
+  .btn:hover { border-color:var(--accent); }
+  .btn.on { background:#16351f; border-color:#2aa35a; color:#8ef0b3; }
+  .btn.off { background:#3a1e1f; border-color:#7a2b2b; color:#f0b4b4; }
+  .wrap { display:grid; grid-template-columns: 1fr 460px; gap:14px; padding:14px 18px; align-items:start; }
+  @media (max-width:1100px){ .wrap{ grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .card h2 { font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin:0; padding:10px 14px; border-bottom:1px solid var(--line); }
+  table { width:100%; border-collapse:collapse; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); font-size:12px; white-space:nowrap; }
+  th { color:var(--muted); font-weight:600; position:sticky; top:0; background:var(--panel); }
+  tbody tr { cursor:pointer; } tbody tr:hover { background:var(--panel2); }
+  tbody tr.sel { background:#12283a; }
+  .lamp { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:2px; background:var(--off); }
+  .lamp.green{background:var(--green);} .lamp.yellow{background:var(--yellow);} .lamp.red{background:var(--red);}
+  .mode { font-size:10.5px; padding:1px 6px; border-radius:4px; border:1px solid var(--line); color:var(--muted); }
+  .mono { font-family:ui-monospace,Menlo,monospace; }
+  .muted { color:var(--muted); }
+  .sw { font-size:10.5px; padding:2px 8px; border-radius:999px; cursor:pointer; border:1px solid var(--line); }
+  .sw.on { background:#16351f; border-color:#2aa35a; color:#8ef0b3; } .sw.off { background:#2a2023; border-color:#5a3033; color:#e6a3a3; }
+  pre { margin:0; padding:10px 12px; background:#0c0f13; border:1px solid var(--line); border-radius:8px; font-size:11px; max-height:230px; overflow:auto; color:#cfe3d6; white-space:pre-wrap; word-break:break-word; }
+  .sub { padding:10px 14px; }
+  .kv { display:flex; gap:6px; font-size:12px; margin:2px 0; } .kv b{ color:var(--muted); font-weight:600; min-width:92px; }
+  .tag { font-size:10px; padding:1px 6px; border-radius:4px; background:var(--panel2); border:1px solid var(--line); margin:1px; display:inline-block; }
+  .ev { padding:5px 12px; border-bottom:1px solid var(--line); font-size:11.5px; display:flex; gap:8px; }
+  .ev .t { color:var(--muted); min-width:62px; } .ev .d.recv{ color:#8ecbf0; } .ev .d.sent{ color:#8ef0b3; }
+  .cmd { border:1px solid var(--line); border-radius:6px; padding:6px 8px; margin:6px 0; font-size:11.5px; }
+  .cmd .st.applied{ color:var(--green);} .cmd .st.received{ color:var(--yellow);}
+  h3 { font-size:12px; margin:12px 0 5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🛰️ Gateway ảo</h1>
+  <span id="conn" class="pill">…</span>
+  <span id="broker" class="pill mono"></span>
+  <span id="rate" class="pill"></span>
+  <span id="count" class="pill"></span>
+  <span style="flex:1"></span>
+  <button class="btn on" onclick="toggleAll(true)">Bật tất cả</button>
+  <button class="btn off" onclick="toggleAll(false)">Tắt tất cả</button>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>Nút giao (bấm để xem chi tiết)</h2>
+    <div style="max-height:calc(100vh - 130px); overflow:auto;">
+      <table>
+        <thead><tr><th>Trạng thái</th><th>Mã</th><th>Tên</th><th>Chế độ</th><th>Pha</th><th>Đèn</th><th>Tốc/Chờ/Lưu lượng</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:14px;">
+    <div class="card" id="detailCard">
+      <h2 id="detailTitle">Chi tiết nút</h2>
+      <div class="sub muted" id="detailBody">Chọn một nút để xem cấu hình + bản tin gửi/nhận.</div>
+    </div>
+    <div class="card">
+      <h2>Nhật ký lệnh / sự kiện</h2>
+      <div id="events" style="max-height:260px; overflow:auto;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let selected = null;
+const $ = (id) => document.getElementById(id);
+const fmtTime = (t) => t ? new Date(t).toLocaleTimeString('vi-VN',{hour12:false}) : '—';
+
+async function toggle(id, enabled){ await fetch('/api/toggle',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,enabled})}); refresh(); }
+async function toggleAll(enabled){ await fetch('/api/toggle',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({all:true,enabled})}); refresh(); }
+function select(id){ selected = (selected===id)?null:id; refresh(); }
+
+async function refresh(){
+  let s; try { s = await (await fetch('/api/state')).json(); } catch(e){ $('conn').textContent='Server sim tắt'; $('conn').className='pill err'; return; }
+  $('conn').textContent = s.connected ? 'Broker: kết nối' : 'Broker: mất kết nối';
+  $('conn').className = 'pill ' + (s.connected?'ok':'err');
+  $('broker').textContent = s.broker;
+  $('rate').textContent = `status ${s.statusMs/1000}s · traffic ${s.trafficMs/1000}s`;
+  $('count').textContent = `Bật ${s.enabledCount}/${s.count} nút`;
+
+  $('rows').innerHTML = s.nodes.map(n => `
+    <tr class="${selected===n.id?'sel':''}" onclick="select('${n.id}')">
+      <td><span class="sw ${n.enabled?'on':'off'}" onclick="event.stopPropagation();toggle('${n.id}',${!n.enabled})">${n.enabled?'BẬT':'TẮT'}</span></td>
+      <td class="mono">${n.id}</td>
+      <td>${n.name}</td>
+      <td><span class="mode">${n.mode}</span></td>
+      <td class="mono">${n.enabled?(n.phaseIdx+1):'–'}/${n.phaseCount}</td>
+      <td>${n.lamps.map(l=>`<span class="lamp ${n.enabled?l.color:'off'}" title="${l.code}"></span>`).join('')}</td>
+      <td class="muted mono">${n.enabled&&n.avgSpeed!=null?`${n.avgSpeed}km/h · ${n.maxQueue}xe · ${n.totFlow}xe/h`:'—'}</td>
+    </tr>`).join('');
+
+  $('events').innerHTML = s.events.map(e => `
+    <div class="ev"><span class="t mono">${fmtTime(e.t)}</span><span class="d ${e.dir}">${e.dir==='recv'?'⬇':'⬆'}</span><span>${e.id!=='*'?`<b class="mono">${e.id}</b> `:''}${e.summary}</span></div>`).join('') || '<div class="sub muted">Chưa có sự kiện.</div>';
+
+  if (selected) await loadDetail(selected);
+  else { $('detailTitle').textContent='Chi tiết nút'; $('detailBody').innerHTML='<span class="muted">Chọn một nút để xem cấu hình + bản tin gửi/nhận.</span>'; }
+}
+
+async function loadDetail(id){
+  let n; try { const r = await fetch('/api/node/'+id); if(!r.ok) return; n = await r.json(); } catch(e){ return; }
+  $('detailTitle').textContent = `${n.id} — ${n.name}`;
+  const dirs = n.config.directions.map(d => `<div class="kv"><b>${d.code} (${d.road||'—'})</b><span class="muted">plc ${d.plc} · ${d.movements.join(', ')||'—'}</span></div>`).join('');
+  const phases = n.config.phases.map(p => `<span class="tag">${p.code}: hướng ${p.greenDirs.join(',')} · xanh ${p.greenSec}s</span>`).join('');
+  const cmds = (n.cmdLog||[]).map(c => `<div class="cmd"><b>${c.label}</b>${c.reqId!=null?` #${c.reqId}`:''} <span class="st ${c.stage}">[${c.stage}]</span> <span class="muted mono">${fmtTime(c.t)}</span></div>`).join('') || '<span class="muted">Chưa nhận lệnh nào.</span>';
+  $('detailBody').innerHTML = `
+    <div class="sub" style="padding:0 0 6px;">
+      <div class="kv"><b>Gateway</b><span class="mono">${n.gatewayId}</span></div>
+      <div class="kv"><b>Chế độ</b><span>${n.mode} · ${n.enabled?'đang bắn':'đã tắt'}</span></div>
+      <h3>Hướng</h3>${dirs}
+      <h3>Pha</h3><div>${phases}</div>
+      <h3>Bản tin traffic (data AI) gửi lên — plc/${n.id}/traffic</h3>
+      <pre>${n.lastTraffic?JSON.stringify(n.lastTraffic,null,1):'(chưa bắn)'}</pre>
+      <h3>Bản tin status gửi lên — plc/${n.id}/status</h3>
+      <pre>${n.lastStatus?JSON.stringify(n.lastStatus,null,1):'(chưa bắn)'}</pre>
+      <h3>Lệnh nhận từ server — plc/${n.id}/command</h3>${cmds}
+    </div>`;
+}
+
+refresh();
+setInterval(refresh, 1500);
+</script>
+</body>
+</html>
