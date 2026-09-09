@@ -52,6 +52,7 @@
   <span id="rate" class="pill"></span>
   <span id="count" class="pill"></span>
   <span style="flex:1"></span>
+  <button class="btn" onclick="addDevice()">➕ Thêm thiết bị</button>
   <button class="btn on" onclick="toggleAll(true)">Bật tất cả</button>
   <button class="btn off" onclick="toggleAll(false)">Tắt tất cả</button>
 </header>
@@ -87,6 +88,20 @@ const fmtTime = (t) => t ? new Date(t).toLocaleTimeString('vi-VN',{hour12:false}
 async function toggle(id, enabled){ await fetch('/api/toggle',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,enabled})}); refresh(); }
 async function toggleAll(enabled){ await fetch('/api/toggle',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({all:true,enabled})}); refresh(); }
 function select(id){ selected = (selected===id)?null:id; refresh(); }
+async function addDevice(){
+  const id = (prompt('Nhập MÃ NÚT GIAO của thiết bị mới (VD: NG-99):')||'').trim();
+  if(!id) return;
+  const name = (prompt('Tên nút (bỏ trống = dùng mã):')||'').trim();
+  const r = await fetch('/api/add-device',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,name})});
+  if(!r.ok){ const e=await r.json().catch(()=>({})); alert('Lỗi: '+(e.error||r.status)); return; }
+  alert('Đã thêm '+id+' (chưa có cấu hình). Vào cloud gửi lệnh SYNC_ALL cho nút này để nạp hướng/pha.');
+  selected = id; refresh();
+}
+async function delDevice(id){
+  if(!confirm('Xoá thiết bị '+id+' khỏi gateway ảo?')) return;
+  await fetch('/api/node/'+id,{method:'DELETE'});
+  selected = null; refresh();
+}
 
 async function refresh(){
   let s; try { s = await (await fetch('/api/state')).json(); } catch(e){ $('conn').textContent='Server sim tắt'; $('conn').className='pill err'; return; }
@@ -102,8 +117,8 @@ async function refresh(){
       <td class="mono">${n.id}</td>
       <td>${n.name}</td>
       <td><span class="mode">${n.mode}</span></td>
-      <td class="mono">${n.enabled?(n.phaseIdx+1):'–'}/${n.phaseCount}</td>
-      <td>${n.lamps.map(l=>`<span class="lamp ${n.enabled?l.color:'off'}" title="${l.code}"></span>`).join('')}</td>
+      <td class="mono">${n.phaseCount?((n.enabled?n.phaseIdx+1:'–')+'/'+n.phaseCount):'⏳'}</td>
+      <td>${n.phaseCount?n.lamps.map(l=>`<span class="lamp ${n.enabled?l.color:'off'}" title="${l.code}"></span>`).join(''):'<span class="muted" style="font-size:10.5px">chờ SYNC_ALL</span>'}</td>
       <td class="muted mono">${n.enabled&&n.avgSpeed!=null?`${n.avgSpeed}km/h · ${n.maxQueue}xe · ${n.totFlow}xe/h`:'—'}</td>
     </tr>`).join('');
 
@@ -120,11 +135,13 @@ async function loadDetail(id){
   const dirs = n.config.directions.map(d => `<div class="kv"><b>${d.code} (${d.road||'—'})</b><span class="muted">plc ${d.plc} · ${d.movements.join(', ')||'—'}</span></div>`).join('');
   const phases = n.config.phases.map(p => `<span class="tag">${p.code}: hướng ${p.greenDirs.join(',')} · xanh ${p.greenSec}s</span>`).join('');
   const cmds = (n.cmdLog||[]).map(c => `<div class="cmd"><b>${c.label}</b>${c.reqId!=null?` #${c.reqId}`:''} <span class="st ${c.stage}">[${c.stage}]</span> <span class="muted mono">${fmtTime(c.t)}</span></div>`).join('') || '<span class="muted">Chưa nhận lệnh nào.</span>';
+  const blank = !n.config.phases.length;
   $('detailBody').innerHTML = `
     <div class="sub" style="padding:0 0 6px;">
-      <div class="kv"><b>Gateway</b><span class="mono">${n.gatewayId}</span></div>
+      <div class="kv"><b>Gateway</b><span class="mono">${n.gatewayId}</span> <button class="sw off" style="margin-left:auto" onclick="delDevice('${n.id}')">Xoá thiết bị</button></div>
       <div class="kv"><b>Chế độ</b><span>${n.mode} · ${n.enabled?'đang bắn':'đã tắt'}</span></div>
-      <h3>Hướng</h3>${dirs}
+      ${blank?'<div class="cmd" style="border-color:#5a4a12;color:#f7e6a8">⏳ Thiết bị chưa có cấu hình. Vào cloud gửi <b>SYNC_ALL</b> cho nút này → sim sẽ học hướng/pha và lưu vào DB riêng.</div>':''}
+      <h3>Hướng</h3>${dirs||'<span class="muted">chưa có</span>'}
       <h3>Pha</h3><div>${phases}</div>
       <h3>Bản tin traffic (data AI) gửi lên — plc/${n.id}/traffic</h3>
       <pre>${n.lastTraffic?JSON.stringify(n.lastTraffic,null,1):'(chưa bắn)'}</pre>

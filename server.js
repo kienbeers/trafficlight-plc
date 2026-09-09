@@ -76,7 +76,7 @@ function persistNode(node) {
         code: p.code, greenSec: p.greenSec, yellowSec: p.yellowSec, allRedSec: p.allRedSec,
         greenCodes: [...p.greenDirs].map((plc) => { const d = node.dirsMeta.find((x) => x.directionPlc === plc); return d ? d.code : String(plc); }),
     }));
-    db.collection('nodes').updateOne({ id: node.id }, { $set: { systemMode: node.sim.systemMode, activeProfile: node.sim.activeProfile, phases } }).catch(() => {});
+    db.collection('nodes').updateOne({ id: node.id }, { $set: { directions: node.dirsMeta, systemMode: node.sim.systemMode, activeProfile: node.sim.activeProfile, phases } }).catch(() => {});
 }
 
 const durOf = (p) => p.greenSec + p.yellowSec + p.allRedSec;
@@ -115,6 +115,14 @@ function genTraffic(node) {
 
 function buildStatus(node) {
     const sim = node.sim;
+    if (!node.phases.length) {
+        // Thiết bị blank (chưa SYNC) → báo online + MaintenanceLock=1, chưa có pha/hướng.
+        return {
+            intersection_id: node.id, Timestamp: nowIso(), SystemMode: SYS_MODE_CODE[sim.systemMode] || 0,
+            ConnectivityStatus: 0, EffectiveOffline: 0, ServerLinkOK: 1, Fault_Latched: 0, MaintenanceLock: 1, RTC_Valid: 1,
+            Current_Phase: 0, PLC_Heartbeat_Counter: ++sim.hb, NumDirections: node.dirs.length, NumPhases: 0,
+        };
+    }
     const p = node.phases[sim.phaseIdx];
     const stage = sim.elapsed < p.greenSec ? 'green' : (sim.elapsed < p.greenSec + p.yellowSec ? 'yellow' : 'allred');
     const safe = sim.systemMode === 'SAFE';
@@ -158,6 +166,7 @@ function buildStatus(node) {
 
 function advance(node) {
     const sim = node.sim;
+    if (!node.phases.length) return;
     if (sim.systemMode !== 'AUTO' && sim.systemMode !== 'ADAPTIVE') return;
     const dur = durOf(node.phases[sim.phaseIdx]);
     sim.elapsed += Math.round(CFG.statusMs / 1000) || 1;
@@ -240,15 +249,22 @@ async function main() {
         node.phases.forEach((p, i) => { const g = cmd[`Cmd_BaseGreen_${i}`]; if (g != null) { ap.baseGreen[i] = Number(g); p.greenSec = Number(g) || p.greenSec; } p.yellowSec = ap.yellow; p.allRedSec = ap.allRed; });
     }
     function applyTopology(node, cmd) {
+        const numDir = Number(cmd.Cmd_NumDirections) || node.dirs.length;
         const np = Number(cmd.Cmd_NumPhases) || node.phases.length;
-        if (np < 1) return;
+        if (np < 1 || numDir < 1) return;
+        // Thiết bị mới thêm (blank, chưa có hướng) → dựng hướng H1..Hn từ lệnh SYNC.
+        if (node.dirs.length === 0) {
+            node.dirsMeta = Array.from({ length: numDir }, (_, i) => ({ code: `H${i + 1}`, directionPlc: i + 1, roadName: null, movements: [] }));
+            node.dirs = node.dirsMeta.map((d) => d.directionPlc);
+            node.sim.traffic = node.dirsMeta.map(() => ({ q: 3 + Math.random() * 12 }));
+        }
         const rebuilt = [];
         for (let i = 0; i < np; i++) {
             const bits = Number(cmd[`Cmd_PhaseDirectionMap_${i}`]) || 0;
             const greenDirs = new Set();
             node.dirs.forEach((d) => { if (bits & (1 << (d - 1))) greenDirs.add(d); });
             const old = node.phases[i] || {};
-            rebuilt.push({ index: i + 1, code: old.code || `P${i + 1}`, greenSec: old.greenSec || 20, yellowSec: old.yellowSec || 3, allRedSec: old.allRedSec || 2, greenDirs });
+            rebuilt.push({ index: i + 1, code: old.code || `P${i + 1}`, greenSec: old.greenSec || (16 + Math.floor(Math.random() * 22)), yellowSec: old.yellowSec || 3, allRedSec: old.allRedSec || 2, greenDirs });
         }
         node.phases.length = 0; node.phases.push(...rebuilt);
         if (node.sim.phaseIdx >= node.phases.length) { node.sim.phaseIdx = 0; node.sim.elapsed = 0; }
@@ -271,7 +287,7 @@ async function main() {
     setInterval(() => {
         if (!state.connected) return;
         for (const node of nodes) {
-            if (!node.sim.enabled) continue;
+            if (!node.sim.enabled || !node.dirsMeta.length) continue;
             const tr = genTraffic(node);
             client.publish(`plc/${node.id}/traffic`, JSON.stringify(tr), { qos: 1 });
             node.lastTraffic = tr; node.lastTrafficAt = Date.now();
@@ -313,6 +329,29 @@ async function main() {
         const { id, all, enabled } = req.body || {};
         if (all) { nodes.forEach((n) => { n.sim.enabled = !!enabled; }); logEvent('sent', '*', `${enabled ? 'BẬT' : 'TẮT'} tất cả nút`, null); }
         else { const n = nodeById.get(id); if (!n) return res.status(404).json({ error: 'không có nút' }); n.sim.enabled = !!enabled; logEvent('sent', id, `${enabled ? 'BẬT' : 'TẮT'} nút`, null); }
+        res.json({ ok: true });
+    });
+
+    app.post('/api/add-device', async (req, res) => {
+        const id = String((req.body && req.body.id) || '').trim();
+        const name = String((req.body && req.body.name) || '').trim() || id;
+        if (!id) return res.status(400).json({ error: 'thiếu mã nút giao' });
+        if (nodeById.has(id)) return res.status(409).json({ error: 'mã nút đã tồn tại' });
+        const doc = { id, name, gatewayId: `GW-${id}`, directions: [], phases: [], systemMode: 'AUTO', activeProfile: null };
+        try { await db.collection('nodes').insertOne(doc); } catch (e) { /* noop */ }
+        const node = buildNode(doc);
+        nodes.push(node); nodeById.set(id, node);
+        logEvent('sent', id, 'Thêm thiết bị (blank, chưa cấu hình) — chờ SYNC_ALL từ cloud', null);
+        res.json({ ok: true });
+    });
+
+    app.delete('/api/node/:id', async (req, res) => {
+        const id = req.params.id;
+        const i = nodes.findIndex((n) => n.id === id);
+        if (i < 0) return res.status(404).json({ error: 'không có nút' });
+        nodes.splice(i, 1); nodeById.delete(id);
+        try { await db.collection('nodes').deleteOne({ id }); } catch (e) { /* noop */ }
+        logEvent('sent', id, 'Xoá thiết bị', null);
         res.json({ ok: true });
     });
 
