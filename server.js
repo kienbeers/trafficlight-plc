@@ -1,56 +1,75 @@
 const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const mqtt = require('mqtt');
 const { MongoClient } = require('mongodb');
 
-// ===== CẤU HÌNH (hard-code — sửa thẳng ở đây nếu cần) =====
+// ===== CẤU HÌNH =====
+// Gateway ảo có DB RIÊNG (độc lập cloud): Mongo riêng đóng trong Docker (service "db").
+// Cấu hình ban đầu seed từ nodes.seed.json; thay đổi do lệnh cloud lưu vào DB riêng này.
 const CFG = {
-    broker: 'mqtt://167.254.68.86:1883',
-    username: 'admin',
-    password: 'admin123',
-    clientId: 'gateway-sim',
-    httpPort: 4100,
-    statusMs: 1000,
-    trafficMs: 5000,
-    mongoDsn: 'mongodb://admin:admin123@167.254.68.86:27017/traffic_light?authSource=admin',
+    broker: process.env.SIM_BROKER || 'mqtt://167.254.68.86:1883',
+    username: process.env.SIM_USER || 'admin',
+    password: process.env.SIM_PASS || 'admin123',
+    clientId: process.env.SIM_CLIENT_ID || 'gateway-sim',
+    httpPort: Number(process.env.SIM_PORT || 4100),
+    statusMs: Number(process.env.SIM_STATUS_MS || 1000),
+    trafficMs: Number(process.env.SIM_TRAFFIC_MS || 5000),
+    mongoUrl: process.env.MONGO_URL || 'mongodb://127.0.0.1:27017',
+    dbName: process.env.MONGO_DB || 'gateway_sim',
+    seedFile: path.join(__dirname, 'nodes.seed.json'),
 };
 
 const SYS_MODE_CODE = { AUTO: 0, MANUAL: 1, ADAPTIVE: 2, SAFE: 3 };
 const SYS_MODE_BY_CODE = { 0: 'AUTO', 1: 'MANUAL', 2: 'ADAPTIVE', 3: 'SAFE' };
 const LAMP_CODE = { RED: 0, YELLOW: 1, GREEN: 2 };
 
+let db = null;
+
 async function loadNodes() {
-    const client = new MongoClient(CFG.mongoDsn, { serverSelectionTimeoutMS: 6000 });
+    const client = new MongoClient(CFG.mongoUrl, { serverSelectionTimeoutMS: 8000 });
     await client.connect();
-    const db = client.db();
-    const its = await db.collection('intersections').find({ setupComplete: true }).toArray();
-    const ids = its.map((i) => i.intersectionId);
-    const dirs = await db.collection('directions').find({ intersectionId: { $in: ids } }).toArray();
-    await client.close();
+    db = client.db(CFG.dbName);
+    const col = db.collection('nodes');
+    if ((await col.countDocuments()) === 0) {
+        const seed = JSON.parse(fs.readFileSync(CFG.seedFile, 'utf8'));
+        await col.insertMany(seed.map((s) => ({ ...s, systemMode: 'AUTO', activeProfile: null })));
+        console.log(`[sim] Seed DB riêng (${CFG.dbName}.nodes): ${seed.length} nút từ nodes.seed.json`);
+    }
+    const docs = await col.find({}).sort({ id: 1 }).toArray();
+    return docs.map(buildNode);
+}
 
-    const dirByNode = {};
-    for (const d of dirs) (dirByNode[d.intersectionId] = dirByNode[d.intersectionId] || []).push(d);
-
-    return its.map((it) => {
-        const nd = (dirByNode[it.intersectionId] || []).sort((a, b) => a.directionPlc - b.directionPlc);
-        const codeToPlc = new Map(nd.map((d) => [d.code, d.directionPlc]));
-        const dirsPlc = nd.map((d) => d.directionPlc);
-        const phases = (it.phases || []).map((p, i) => {
-            const greenDirs = new Set();
-            (p.greens || []).forEach((g) => { const plc = codeToPlc.get(g.directionCode); if (plc) greenDirs.add(plc); });
-            return { index: i + 1, code: p.code || `P${i + 1}`, greenSec: 20, yellowSec: 3, allRedSec: 2, greenDirs };
-        });
-        return {
-            id: it.intersectionId, name: it.name, gatewayId: it.gatewayId || `GW-${it.intersectionId}`,
-            dirsMeta: nd, dirs: dirsPlc, phases,
-            sim: {
-                enabled: true, phaseIdx: 0, elapsed: 0, systemMode: 'AUTO', hb: 0, pingCounter: 0, lastApproved: null,
-                activeProfile: { minGreen: 12, maxGreen: 60, yellow: 3, allRed: 2, lowQueue: 3, baseGreen: phases.map((p) => p.greenSec) },
-                traffic: nd.map(() => ({ q: 3 + Math.random() * 8 })),
-            },
-            lastStatus: null, lastStatusAt: 0, lastTraffic: null, lastTrafficAt: 0, cmdLog: [],
-        };
+function buildNode(it) {
+    const nd = (it.directions || []).slice().sort((a, b) => a.directionPlc - b.directionPlc);
+    const codeToPlc = new Map(nd.map((d) => [d.code, d.directionPlc]));
+    const dirsPlc = nd.map((d) => d.directionPlc);
+    const phases = (it.phases || []).map((p, i) => {
+        const greenDirs = new Set();
+        const greens = p.greens || (p.greenCodes || []).map((c) => ({ directionCode: c }));
+        greens.forEach((g) => { const plc = codeToPlc.get(g.directionCode); if (plc) greenDirs.add(plc); });
+        return { index: i + 1, code: p.code || `P${i + 1}`, greenSec: p.greenSec || 20, yellowSec: p.yellowSec || 3, allRedSec: p.allRedSec || 2, greenDirs };
     });
+    const activeProfile = it.activeProfile || { minGreen: 12, maxGreen: 60, yellow: 3, allRed: 2, lowQueue: 3, baseGreen: phases.map((p) => p.greenSec) };
+    return {
+        id: it.id, name: it.name, gatewayId: it.gatewayId || `GW-${it.id}`,
+        dirsMeta: nd, dirs: dirsPlc, phases,
+        sim: {
+            enabled: true, phaseIdx: 0, elapsed: 0, systemMode: it.systemMode || 'AUTO', hb: 0, pingCounter: 0, lastApproved: null,
+            activeProfile, traffic: nd.map(() => ({ q: 3 + Math.random() * 8 })),
+        },
+        lastStatus: null, lastStatusAt: 0, lastTraffic: null, lastTrafficAt: 0, cmdLog: [],
+    };
+}
+
+// Lưu thay đổi cấu hình (do lệnh cloud) vào DB RIÊNG của PLC — cloud và PLC lưu tách biệt.
+function persistNode(node) {
+    if (!db) return;
+    const phases = node.phases.map((p) => ({
+        code: p.code, greenSec: p.greenSec, yellowSec: p.yellowSec, allRedSec: p.allRedSec,
+        greenCodes: [...p.greenDirs].map((plc) => { const d = node.dirsMeta.find((x) => x.directionPlc === plc); return d ? d.code : String(plc); }),
+    }));
+    db.collection('nodes').updateOne({ id: node.id }, { $set: { systemMode: node.sim.systemMode, activeProfile: node.sim.activeProfile, phases } }).catch(() => {});
 }
 
 const durOf = (p) => p.greenSec + p.yellowSec + p.allRedSec;
@@ -145,7 +164,7 @@ function logEvent(dir, id, summary, payload) {
 }
 
 async function main() {
-    console.log('[sim] Đang đọc cấu hình nút từ Mongo…');
+    console.log(`[sim] Đang đọc cấu hình nút từ DB riêng: ${CFG.mongoUrl}/${CFG.dbName}…`);
     const nodes = await loadNodes();
     const nodeById = new Map(nodes.map((n) => [n.id, n]));
     console.log(`[sim] Nạp ${nodes.length} nút: ${nodes.map((n) => n.id).join(', ')}`);
@@ -184,6 +203,7 @@ async function main() {
         else if (type === 1) { const wp = Number(cmd.Cmd_TargetPhase); sim.phaseIdx = ((wp % node.phases.length) + node.phases.length) % node.phases.length; sim.elapsed = 0; sim.systemMode = 'MANUAL'; }
         else if (type === 6) { applyActiveProfile(node, cmd); }
         else if (type === 10) { applyTopology(node, cmd); }
+        persistNode(node);
         sim.lastApproved = { typeCode: type };
         const reqId = cmd.Request_Id != null ? cmd.Request_Id : cmd.request_id;
         const label = `${TYPE_NAME[type] || 'CMD_' + type}`;

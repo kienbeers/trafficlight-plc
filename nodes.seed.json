@@ -1,0 +1,2986 @@
+[
+  {
+    "id": "HN-01",
+    "name": "Phạm Văn Đồng × Hoàng Quốc Việt",
+    "gatewayId": "GW-HN-01",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Phạm Văn Đồng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Hoàng Quốc Việt",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Phạm Văn Đồng",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Hoàng Quốc Việt",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-02",
+    "name": "Mai Dịch (Phạm Văn Đồng × Phạm Hùng × Xuân Thủy × Hồ Tùng Mậu)",
+    "gatewayId": "GW-HN-02",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Phạm Văn Đồng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Xuân Thủy",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Hồ Tùng Mậu",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-03",
+    "name": "Phạm Hùng × Tôn Thất Thuyết × Nguyễn Hoàng",
+    "gatewayId": "GW-HN-03",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Tôn Thất Thuyết",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Nguyễn Hoàng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "PH-MT-DDN",
+    "name": "Phạm Hùng × Dương Đình Nghệ × Mễ Trì (Keangnam)",
+    "gatewayId": "GW-PH-MT-DDN",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Mễ Trì",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-05",
+    "name": "Phạm Hùng × Đỗ Đức Dục",
+    "gatewayId": "GW-HN-05",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Đỗ Đức Dục",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Đỗ Đức Dục",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-06",
+    "name": "Phạm Hùng × Mạc Thái Tông",
+    "gatewayId": "GW-HN-06",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Mạc Thái Tông",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Mạc Thái Tông",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-07",
+    "name": "Trung Hòa (Phạm Hùng × Trần Duy Hưng × Khuất Duy Tiến)",
+    "gatewayId": "GW-HN-07",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Trần Duy Hưng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Khuất Duy Tiến",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Phạm Hùng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-08",
+    "name": "Trần Thái Tông × Duy Tân × Thành Thái",
+    "gatewayId": "GW-HN-08",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Trần Thái Tông",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Duy Tân",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Trần Thái Tông",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Thành Thái",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-09",
+    "name": "Dương Đình Nghệ × Trung Kính",
+    "gatewayId": "GW-HN-09",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-10",
+    "name": "Dương Đình Nghệ × Nguyễn Hữu An",
+    "gatewayId": "GW-HN-10",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Hữu An",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Nguyễn Hữu An",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-11",
+    "name": "Dương Đình Nghệ × Nguyễn Chánh",
+    "gatewayId": "GW-HN-11",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Chánh",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Nguyễn Chánh",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Dương Đình Nghệ",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-12",
+    "name": "Phạm Văn Bạch × Trung Kính",
+    "gatewayId": "GW-HN-12",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Phạm Văn Bạch",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Phạm Văn Bạch",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-13",
+    "name": "Trung Kính × Mạc Thái Tông × Vũ Phạm Hàm",
+    "gatewayId": "GW-HN-13",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Vũ Phạm Hàm",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Mạc Thái Tông",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Trung Kính",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-14",
+    "name": "Mễ Trì × Vũ Quỳnh × Đồng Me",
+    "gatewayId": "GW-HN-14",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Vũ Quỳnh",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Mễ Trì",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Đồng Me",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Mễ Trì",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-15",
+    "name": "Trần Duy Hưng × Hoàng Minh Giám × Nguyễn Chánh",
+    "gatewayId": "GW-HN-15",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Hoàng Minh Giám",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Trần Duy Hưng",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Nguyễn Chánh",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Trần Duy Hưng",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-16",
+    "name": "Nguyễn Khang × Vũ Phạm Hàm",
+    "gatewayId": "GW-HN-16",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Khang",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Nguyễn Khang",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Vũ Phạm Hàm",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-17",
+    "name": "Lê Văn Lương × Hoàng Minh Giám × Nguyễn Tuân",
+    "gatewayId": "GW-HN-17",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Tuân",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Lê Văn Lương",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Hoàng Minh Giám",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Lê Văn Lương",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-18",
+    "name": "Khuất Duy Tiến × Tố Hữu × Lê Văn Lương",
+    "gatewayId": "GW-HN-18",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Khuất Duy Tiến",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Tố Hữu",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Khuất Duy Tiến",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Lê Văn Lương",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-19",
+    "name": "Nguyễn Khánh Toàn × Nguyễn Văn Huyên",
+    "gatewayId": "GW-HN-19",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Văn Huyên",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Nguyễn Khánh Toàn",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Nguyễn Văn Huyên",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Nguyễn Khánh Toàn",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HN-20",
+    "name": "Hoàng Quốc Việt × Nguyễn Phong Sắc × Trần Cung",
+    "gatewayId": "GW-HN-20",
+    "directions": [
+      {
+        "code": "H1",
+        "directionPlc": 1,
+        "roadName": "Nguyễn Phong Sắc",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H2",
+        "directionPlc": 2,
+        "roadName": "Hoàng Quốc Việt",
+        "movements": [
+          {
+            "turn": "right",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H3"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H3",
+        "directionPlc": 3,
+        "roadName": "Trần Cung",
+        "movements": [
+          {
+            "turn": "straight",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "left",
+            "toDirectionCode": "H4"
+          }
+        ]
+      },
+      {
+        "code": "H4",
+        "directionPlc": 4,
+        "roadName": "Hoàng Quốc Việt",
+        "movements": [
+          {
+            "turn": "left",
+            "toDirectionCode": "H1"
+          },
+          {
+            "turn": "straight",
+            "toDirectionCode": "H2"
+          },
+          {
+            "turn": "right",
+            "toDirectionCode": "H3"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      {
+        "code": "P1",
+        "greens": [
+          {
+            "directionCode": "H1",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          }
+        ]
+      },
+      {
+        "code": "P2",
+        "greens": [
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "straight"
+          }
+        ]
+      },
+      {
+        "code": "P3",
+        "greens": [
+          {
+            "directionCode": "H3",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "left"
+          }
+        ]
+      },
+      {
+        "code": "P4",
+        "greens": [
+          {
+            "directionCode": "H4",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          }
+        ]
+      }
+    ]
+  }
+]

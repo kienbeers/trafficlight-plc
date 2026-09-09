@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mongo:7
+    container_name: gateway-sim-db
+    restart: unless-stopped
+    volumes:
+      - gwdb:/data/db
+
+  sim:
+    build: .
+    container_name: gateway-sim
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      MONGO_URL: mongodb://db:27017
+      MONGO_DB: gateway_sim
+      SIM_BROKER: mqtt://167.254.68.86:1883
+      SIM_USER: admin
+      SIM_PASS: admin123
+      SIM_CLIENT_ID: gateway-sim
+    ports:
+      - "4100:4100"
+
+volumes:
+  gwdb:
