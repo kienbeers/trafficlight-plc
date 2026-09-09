@@ -164,13 +164,19 @@ function buildStatus(node) {
     return status;
 }
 
+// Trả về true nếu vừa HẾT 1 CHU KỲ (phaseIdx quay về 0).
 function advance(node) {
     const sim = node.sim;
-    if (!node.phases.length) return;
-    if (sim.systemMode !== 'AUTO' && sim.systemMode !== 'ADAPTIVE') return;
+    if (!node.phases.length) return false;
+    if (sim.systemMode !== 'AUTO' && sim.systemMode !== 'ADAPTIVE') return false;
     const dur = durOf(node.phases[sim.phaseIdx]);
     sim.elapsed += Math.round(CFG.statusMs / 1000) || 1;
-    if (sim.elapsed >= dur) { sim.elapsed = 0; sim.phaseIdx = (sim.phaseIdx + 1) % node.phases.length; }
+    if (sim.elapsed >= dur) {
+        sim.elapsed = 0;
+        sim.phaseIdx = (sim.phaseIdx + 1) % node.phases.length;
+        return sim.phaseIdx === 0;
+    }
+    return false;
 }
 
 const events = [];
@@ -215,27 +221,45 @@ async function main() {
         const sim = node.sim;
         const type = Number(cmd.Cmd_Type);
         const TYPE_NAME = { 0: 'SET_MODE', 1: 'SET_PHASE', 6: 'SET_ACTIVE_PROFILE', 7: 'SET_FALLBACK_PROFILE', 8: 'SET_RTC_TIME', 10: 'SET_TOPOLOGY' };
-        if (type === 0) { const m = SYS_MODE_BY_CODE[Number(cmd.Cmd_TargetMode)]; if (m) { sim.systemMode = m; sim.elapsed = 0; } }
-        else if (type === 1) { const wp = Number(cmd.Cmd_TargetPhase); sim.phaseIdx = ((wp % node.phases.length) + node.phases.length) % node.phases.length; sim.elapsed = 0; sim.systemMode = 'MANUAL'; }
-        else if (type === 6) { applyActiveProfile(node, cmd); }
-        else if (type === 10) { applyTopology(node, cmd); }
-        persistNode(node);
-        sim.lastApproved = { typeCode: type };
         const reqId = cmd.Request_Id != null ? cmd.Request_Id : cmd.request_id;
         const label = `${TYPE_NAME[type] || 'CMD_' + type}`;
+        if (type === 0) { const m = SYS_MODE_BY_CODE[Number(cmd.Cmd_TargetMode)]; if (m) { sim.systemMode = m; sim.elapsed = 0; } }
+        else if (type === 1) { const wp = Number(cmd.Cmd_TargetPhase); sim.phaseIdx = ((wp % node.phases.length) + node.phases.length) % node.phases.length; sim.elapsed = 0; sim.systemMode = 'MANUAL'; }
+        else if (type === 6) { sim.pending = { cmd, type, reqId, label }; } // profile mới: CHỜ HẾT CHU KỲ mới áp
+        else if (type === 10) { applyTopology(node, cmd); }
+        if (type !== 6) persistNode(node);
+        sim.lastApproved = { typeCode: type };
         node.cmdLog.unshift({ t: Date.now(), type, label, reqId, payload: cmd, stage: 'received' });
         while (node.cmdLog.length > 30) node.cmdLog.pop();
-        logEvent('recv', node.id, `lệnh ${label}${reqId ? ' #' + reqId : ''}`, cmd);
+        logEvent('recv', node.id, `lệnh ${label}${reqId != null ? ' #' + reqId : ''}`, cmd);
         if (reqId != null) {
             client.publish(`plc/${node.id}/ack`, JSON.stringify({ intersection_id: node.id, Request_Id: reqId, Cmd_Type: type, Stage: 0, Reject_Reason: 0, Timestamp: nowIso() }), { qos: 1 });
-            const p = node.phases[sim.phaseIdx];
-            const remainMs = Math.max(2000, (durOf(p) - sim.elapsed) * 1000);
-            setTimeout(() => {
-                client.publish(`plc/${node.id}/ack`, JSON.stringify({ intersection_id: node.id, Request_Id: reqId, Cmd_Type: type, Stage: 1, Reject_Reason: 0, Timestamp: nowIso() }), { qos: 1 });
-                const e = node.cmdLog.find((x) => x.reqId === reqId); if (e) e.stage = 'applied';
-                logEvent('sent', node.id, `ACK applied ${label} #${reqId}`, null);
-            }, remainMs);
             logEvent('sent', node.id, `ACK received ${label} #${reqId}`, null);
+            if (type === 6) {
+                logEvent('sent', node.id, `${label} #${reqId}: chờ hết chu kỳ đèn để chạy profile mới…`, null);
+            } else {
+                const p = node.phases[sim.phaseIdx];
+                const remainMs = node.phases.length ? Math.max(2000, (durOf(p) - sim.elapsed) * 1000) : 2000;
+                setTimeout(() => {
+                    client.publish(`plc/${node.id}/ack`, JSON.stringify({ intersection_id: node.id, Request_Id: reqId, Cmd_Type: type, Stage: 1, Reject_Reason: 0, Timestamp: nowIso() }), { qos: 1 });
+                    const e = node.cmdLog.find((x) => x.reqId === reqId); if (e) e.stage = 'applied';
+                    logEvent('sent', node.id, `ACK applied ${label} #${reqId}`, null);
+                }, remainMs);
+            }
+        }
+    }
+
+    // Áp profile đang chờ khi vừa hết chu kỳ (gọi từ vòng status).
+    function applyPending(node) {
+        const pend = node.sim.pending;
+        if (!pend) return;
+        node.sim.pending = null;
+        applyActiveProfile(node, pend.cmd);
+        persistNode(node);
+        if (pend.reqId != null) {
+            client.publish(`plc/${node.id}/ack`, JSON.stringify({ intersection_id: node.id, Request_Id: pend.reqId, Cmd_Type: pend.type, Stage: 1, Reject_Reason: 0, Timestamp: nowIso() }), { qos: 1 });
+            const e = node.cmdLog.find((x) => x.reqId === pend.reqId); if (e) e.stage = 'applied';
+            logEvent('sent', node.id, `ACK applied ${pend.label} #${pend.reqId} (đã hết chu kỳ → chạy profile mới)`, null);
         }
     }
 
@@ -278,7 +302,7 @@ async function main() {
             const st = buildStatus(node);
             client.publish(`plc/${node.id}/status`, JSON.stringify(st), { qos: 1 });
             node.lastStatus = st; node.lastStatusAt = Date.now();
-            advance(node);
+            if (advance(node) && node.sim.pending) applyPending(node); // hết chu kỳ → áp profile đang chờ (chỉ AUTO/ADAPTIVE)
             if (node.sim.hb % 20 === 0) client.publish(`plc/${node.id}/ping`, JSON.stringify({ intersection_id: node.id, PLC_Ping_Counter: ++node.sim.pingCounter }), { qos: 1 });
         }
     }, CFG.statusMs);
