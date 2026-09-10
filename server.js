@@ -49,7 +49,8 @@ function buildNode(it) {
     const phases = (it.phases || []).map((p, i) => {
         const greenDirs = new Set();
         const greens = p.greens || (p.greenCodes || []).map((c) => ({ directionCode: c }));
-        greens.forEach((g) => { const plc = codeToPlc.get(g.directionCode); if (plc) greenDirs.add(plc); });
+        // Đèn HƯỚNG xanh = có thẳng/trái/uturn xanh. Rẽ phải (right-on-red) KHÔNG làm cả hướng xanh.
+        greens.filter((g) => g.turn !== 'right').forEach((g) => { const plc = codeToPlc.get(g.directionCode); if (plc) greenDirs.add(plc); });
         // greenSec khác nhau mỗi nút/pha (16..37s) → chu kỳ lệch nhau, không đồng bộ.
         return { index: i + 1, code: p.code || `P${i + 1}`, greenSec: p.greenSec || (16 + Math.floor(Math.random() * 22)), yellowSec: p.yellowSec || 3, allRedSec: p.allRedSec || 2, greenDirs };
     });

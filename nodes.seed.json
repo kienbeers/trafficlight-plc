@@ -765,10 +765,6 @@
           {
             "turn": "right",
             "toDirectionCode": "H3"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H4"
           }
         ]
       },
@@ -782,37 +778,14 @@
             "toDirectionCode": "H1"
           },
           {
-            "turn": "left",
-            "toDirectionCode": "H3"
-          },
-          {
             "turn": "straight",
-            "toDirectionCode": "H4"
+            "toDirectionCode": "H3"
           }
         ]
       },
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Mạc Thái Tông",
-        "movements": [
-          {
-            "turn": "left",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H4",
-        "directionPlc": 4,
         "roadName": "Phạm Hùng",
         "movements": [
           {
@@ -822,10 +795,6 @@
           {
             "turn": "straight",
             "toDirectionCode": "H2"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H3"
           }
         ]
       }
@@ -837,10 +806,6 @@
           {
             "directionCode": "H1",
             "turn": "left"
-          },
-          {
-            "directionCode": "H1",
-            "turn": "right"
           },
           {
             "directionCode": "H1",
@@ -857,10 +822,6 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H2",
             "turn": "straight"
           }
         ]
@@ -874,28 +835,7 @@
           },
           {
             "directionCode": "H3",
-            "turn": "right"
-          },
-          {
-            "directionCode": "H3",
-            "turn": "left"
-          }
-        ]
-      },
-      {
-        "code": "P4",
-        "greens": [
-          {
-            "directionCode": "H4",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H4",
             "turn": "straight"
-          },
-          {
-            "directionCode": "H4",
-            "turn": "right"
           }
         ]
       }
@@ -916,7 +856,7 @@
             "toDirectionCode": "H2"
           },
           {
-            "turn": "straight",
+            "turn": "left",
             "toDirectionCode": "H3"
           },
           {
@@ -933,10 +873,6 @@
           {
             "turn": "right",
             "toDirectionCode": "H1"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H3"
           },
           {
             "turn": "straight",
@@ -950,15 +886,11 @@
         "roadName": "Khuất Duy Tiến",
         "movements": [
           {
-            "turn": "straight",
+            "turn": "right",
             "toDirectionCode": "H1"
           },
           {
-            "turn": "right",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H4"
           }
         ]
@@ -977,7 +909,7 @@
             "toDirectionCode": "H2"
           },
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H3"
           }
         ]
@@ -993,7 +925,7 @@
           },
           {
             "directionCode": "H1",
-            "turn": "straight"
+            "turn": "left"
           },
           {
             "directionCode": "H1",
@@ -1010,10 +942,6 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H2",
             "turn": "straight"
           }
         ]
@@ -1023,15 +951,11 @@
         "greens": [
           {
             "directionCode": "H3",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H3",
             "turn": "right"
           },
           {
             "directionCode": "H3",
-            "turn": "left"
+            "turn": "straight"
           }
         ]
       },
@@ -1048,160 +972,7 @@
           },
           {
             "directionCode": "H4",
-            "turn": "right"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "HN-08",
-    "name": "Trần Thái Tông × Duy Tân × Thành Thái",
-    "gatewayId": "GW-HN-08",
-    "directions": [
-      {
-        "code": "H1",
-        "directionPlc": 1,
-        "roadName": "Trần Thái Tông",
-        "movements": [
-          {
-            "turn": "left",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H3"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H2",
-        "directionPlc": 2,
-        "roadName": "Duy Tân",
-        "movements": [
-          {
-            "turn": "right",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H3"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H3",
-        "directionPlc": 3,
-        "roadName": "Trần Thái Tông",
-        "movements": [
-          {
-            "turn": "straight",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H4",
-        "directionPlc": 4,
-        "roadName": "Thành Thái",
-        "movements": [
-          {
-            "turn": "left",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H3"
-          }
-        ]
-      }
-    ],
-    "phases": [
-      {
-        "code": "P1",
-        "greens": [
-          {
-            "directionCode": "H1",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H1",
             "turn": "straight"
-          },
-          {
-            "directionCode": "H1",
-            "turn": "right"
-          }
-        ]
-      },
-      {
-        "code": "P2",
-        "greens": [
-          {
-            "directionCode": "H2",
-            "turn": "right"
-          },
-          {
-            "directionCode": "H2",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H2",
-            "turn": "straight"
-          }
-        ]
-      },
-      {
-        "code": "P3",
-        "greens": [
-          {
-            "directionCode": "H3",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H3",
-            "turn": "right"
-          },
-          {
-            "directionCode": "H3",
-            "turn": "left"
-          }
-        ]
-      },
-      {
-        "code": "P4",
-        "greens": [
-          {
-            "directionCode": "H4",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H4",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H4",
-            "turn": "right"
           }
         ]
       }
@@ -1215,7 +986,7 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Trung Kính",
+        "roadName": "Dương Đình Nghệ",
         "movements": [
           {
             "turn": "left",
@@ -1226,7 +997,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "straight",
+            "turn": "right",
             "toDirectionCode": "H4"
           }
         ]
@@ -1234,7 +1005,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Dương Đình Nghệ",
+        "roadName": "Trung Kính",
         "movements": [
           {
             "turn": "right",
@@ -1245,7 +1016,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H4"
           }
         ]
@@ -1253,7 +1024,7 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Trung Kính",
+        "roadName": "Dương Đình Nghệ",
         "movements": [
           {
             "turn": "straight",
@@ -1272,14 +1043,14 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Dương Đình Nghệ",
+        "roadName": "Trung Kính",
         "movements": [
           {
-            "turn": "straight",
+            "turn": "left",
             "toDirectionCode": "H1"
           },
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H2"
           },
           {
@@ -1303,7 +1074,7 @@
           },
           {
             "directionCode": "H1",
-            "turn": "straight"
+            "turn": "right"
           }
         ]
       },
@@ -1320,7 +1091,7 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
+            "turn": "straight"
           }
         ]
       },
@@ -1346,11 +1117,11 @@
         "greens": [
           {
             "directionCode": "H4",
-            "turn": "straight"
+            "turn": "left"
           },
           {
             "directionCode": "H4",
-            "turn": "right"
+            "turn": "straight"
           },
           {
             "directionCode": "H4",
@@ -1521,14 +1292,14 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Nguyễn Chánh",
+        "roadName": "Dương Đình Nghệ",
         "movements": [
           {
             "turn": "left",
             "toDirectionCode": "H2"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H3"
           },
           {
@@ -1540,7 +1311,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Dương Đình Nghệ",
+        "roadName": "Nguyễn Chánh",
         "movements": [
           {
             "turn": "right",
@@ -1559,10 +1330,10 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Nguyễn Chánh",
+        "roadName": "Dương Đình Nghệ",
         "movements": [
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H1"
           },
           {
@@ -1578,7 +1349,7 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Dương Đình Nghệ",
+        "roadName": "Nguyễn Chánh",
         "movements": [
           {
             "turn": "left",
@@ -1605,7 +1376,7 @@
           },
           {
             "directionCode": "H1",
-            "turn": "left"
+            "turn": "straight"
           },
           {
             "directionCode": "H1",
@@ -1635,7 +1406,7 @@
         "greens": [
           {
             "directionCode": "H3",
-            "turn": "right"
+            "turn": "straight"
           },
           {
             "directionCode": "H3",
@@ -1674,7 +1445,7 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Trung Kính",
+        "roadName": "Phạm Văn Bạch",
         "movements": [
           {
             "turn": "left",
@@ -1693,7 +1464,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Phạm Văn Bạch",
+        "roadName": "Trung Kính",
         "movements": [
           {
             "turn": "right",
@@ -1712,7 +1483,7 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Trung Kính",
+        "roadName": "Phạm Văn Bạch",
         "movements": [
           {
             "turn": "straight",
@@ -1731,7 +1502,7 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Phạm Văn Bạch",
+        "roadName": "Trung Kính",
         "movements": [
           {
             "turn": "left",
@@ -2010,7 +1781,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H4"
           }
         ]
@@ -2044,7 +1815,7 @@
             "toDirectionCode": "H1"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H2"
           },
           {
@@ -2085,7 +1856,7 @@
           },
           {
             "directionCode": "H2",
-            "turn": "right"
+            "turn": "straight"
           }
         ]
       },
@@ -2115,7 +1886,7 @@
           },
           {
             "directionCode": "H4",
-            "turn": "left"
+            "turn": "straight"
           },
           {
             "directionCode": "H4",
@@ -2133,7 +1904,7 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Hoàng Minh Giám",
+        "roadName": "Trần Duy Hưng",
         "movements": [
           {
             "turn": "left",
@@ -2152,7 +1923,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Trần Duy Hưng",
+        "roadName": "Hoàng Minh Giám",
         "movements": [
           {
             "turn": "right",
@@ -2171,7 +1942,7 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Nguyễn Chánh",
+        "roadName": "Trần Duy Hưng",
         "movements": [
           {
             "turn": "straight",
@@ -2190,7 +1961,7 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Trần Duy Hưng",
+        "roadName": "Nguyễn Chánh",
         "movements": [
           {
             "turn": "left",
@@ -2289,7 +2060,7 @@
         "roadName": "Nguyễn Khang",
         "movements": [
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H2"
           },
           {
@@ -2304,7 +2075,7 @@
         "roadName": "Nguyễn Khang",
         "movements": [
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H1"
           },
           {
@@ -2335,7 +2106,7 @@
         "greens": [
           {
             "directionCode": "H1",
-            "turn": "right"
+            "turn": "straight"
           },
           {
             "directionCode": "H1",
@@ -2348,7 +2119,7 @@
         "greens": [
           {
             "directionCode": "H2",
-            "turn": "left"
+            "turn": "straight"
           },
           {
             "directionCode": "H2",
@@ -2379,14 +2150,14 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Nguyễn Tuân",
+        "roadName": "Lê Văn Lương",
         "movements": [
           {
             "turn": "left",
             "toDirectionCode": "H2"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H3"
           },
           {
@@ -2398,7 +2169,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Lê Văn Lương",
+        "roadName": "Nguyễn Tuân",
         "movements": [
           {
             "turn": "right",
@@ -2409,7 +2180,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "left",
+            "turn": "right",
             "toDirectionCode": "H4"
           }
         ]
@@ -2417,10 +2188,10 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Hoàng Minh Giám",
+        "roadName": "Lê Văn Lương",
         "movements": [
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H1"
           },
           {
@@ -2436,14 +2207,14 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Lê Văn Lương",
+        "roadName": "Hoàng Minh Giám",
         "movements": [
           {
             "turn": "left",
             "toDirectionCode": "H1"
           },
           {
-            "turn": "right",
+            "turn": "left",
             "toDirectionCode": "H2"
           },
           {
@@ -2463,7 +2234,7 @@
           },
           {
             "directionCode": "H1",
-            "turn": "left"
+            "turn": "straight"
           },
           {
             "directionCode": "H1",
@@ -2484,7 +2255,7 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
+            "turn": "right"
           }
         ]
       },
@@ -2493,7 +2264,7 @@
         "greens": [
           {
             "directionCode": "H3",
-            "turn": "right"
+            "turn": "straight"
           },
           {
             "directionCode": "H3",
@@ -2514,7 +2285,7 @@
           },
           {
             "directionCode": "H4",
-            "turn": "right"
+            "turn": "left"
           },
           {
             "directionCode": "H4",
@@ -2532,14 +2303,14 @@
       {
         "code": "H1",
         "directionPlc": 1,
-        "roadName": "Khuất Duy Tiến",
+        "roadName": "Lê Văn Lương",
         "movements": [
           {
             "turn": "left",
             "toDirectionCode": "H2"
           },
           {
-            "turn": "right",
+            "turn": "left",
             "toDirectionCode": "H3"
           },
           {
@@ -2551,7 +2322,7 @@
       {
         "code": "H2",
         "directionPlc": 2,
-        "roadName": "Tố Hữu",
+        "roadName": "Khuất Duy Tiến",
         "movements": [
           {
             "turn": "right",
@@ -2562,7 +2333,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H4"
           }
         ]
@@ -2570,10 +2341,10 @@
       {
         "code": "H3",
         "directionPlc": 3,
-        "roadName": "Khuất Duy Tiến",
+        "roadName": "Tố Hữu",
         "movements": [
           {
-            "turn": "left",
+            "turn": "right",
             "toDirectionCode": "H1"
           },
           {
@@ -2589,14 +2360,14 @@
       {
         "code": "H4",
         "directionPlc": 4,
-        "roadName": "Lê Văn Lương",
+        "roadName": "Khuất Duy Tiến",
         "movements": [
           {
             "turn": "left",
             "toDirectionCode": "H1"
           },
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H2"
           },
           {
@@ -2616,7 +2387,7 @@
           },
           {
             "directionCode": "H1",
-            "turn": "right"
+            "turn": "left"
           },
           {
             "directionCode": "H1",
@@ -2637,7 +2408,7 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
+            "turn": "straight"
           }
         ]
       },
@@ -2646,7 +2417,7 @@
         "greens": [
           {
             "directionCode": "H3",
-            "turn": "left"
+            "turn": "right"
           },
           {
             "directionCode": "H3",
@@ -2667,7 +2438,7 @@
           },
           {
             "directionCode": "H4",
-            "turn": "right"
+            "turn": "straight"
           },
           {
             "directionCode": "H4",
@@ -2715,7 +2486,7 @@
             "toDirectionCode": "H3"
           },
           {
-            "turn": "left",
+            "turn": "straight",
             "toDirectionCode": "H4"
           }
         ]
@@ -2749,7 +2520,7 @@
             "toDirectionCode": "H1"
           },
           {
-            "turn": "right",
+            "turn": "straight",
             "toDirectionCode": "H2"
           },
           {
@@ -2765,15 +2536,27 @@
         "greens": [
           {
             "directionCode": "H1",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H1",
             "turn": "straight"
           },
           {
             "directionCode": "H1",
             "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "straight"
           }
         ]
       },
@@ -2786,11 +2569,23 @@
           },
           {
             "directionCode": "H2",
-            "turn": "left"
+            "turn": "straight"
           },
           {
-            "directionCode": "H2",
-            "turn": "left"
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "straight"
           }
         ]
       },
@@ -2799,14 +2594,26 @@
         "greens": [
           {
             "directionCode": "H3",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H3",
             "turn": "right"
           },
           {
             "directionCode": "H3",
+            "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
             "turn": "left"
           }
         ]
@@ -2823,8 +2630,20 @@
             "turn": "right"
           },
           {
-            "directionCode": "H4",
+            "directionCode": "H1",
             "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "left"
           }
         ]
       }
@@ -2927,158 +2746,17 @@
           {
             "directionCode": "H1",
             "turn": "right"
-          }
-        ]
-      },
-      {
-        "code": "P2",
-        "greens": [
+          },
           {
             "directionCode": "H2",
             "turn": "right"
-          },
-          {
-            "directionCode": "H2",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H2",
-            "turn": "straight"
-          }
-        ]
-      },
-      {
-        "code": "P3",
-        "greens": [
-          {
-            "directionCode": "H3",
-            "turn": "straight"
           },
           {
             "directionCode": "H3",
             "turn": "right"
           },
           {
-            "directionCode": "H3",
-            "turn": "left"
-          }
-        ]
-      },
-      {
-        "code": "P4",
-        "greens": [
-          {
             "directionCode": "H4",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H4",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H4",
-            "turn": "right"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "PH-TTT-NH",
-    "name": "Phạm Hùng × Tôn Thất Thuyết × Nguyễn Hoàng",
-    "gatewayId": "GW-PH-TTT-NH",
-    "directions": [
-      {
-        "code": "H1",
-        "directionPlc": 1,
-        "roadName": "Phạm Hùng",
-        "movements": [
-          {
-            "turn": "left",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H3"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H2",
-        "directionPlc": 2,
-        "roadName": "Tôn Thất Thuyết",
-        "movements": [
-          {
-            "turn": "right",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H3"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H3",
-        "directionPlc": 3,
-        "roadName": "Phạm Hùng",
-        "movements": [
-          {
-            "turn": "straight",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "left",
-            "toDirectionCode": "H4"
-          }
-        ]
-      },
-      {
-        "code": "H4",
-        "directionPlc": 4,
-        "roadName": "Nguyễn Hoàng",
-        "movements": [
-          {
-            "turn": "left",
-            "toDirectionCode": "H1"
-          },
-          {
-            "turn": "straight",
-            "toDirectionCode": "H2"
-          },
-          {
-            "turn": "right",
-            "toDirectionCode": "H3"
-          }
-        ]
-      }
-    ],
-    "phases": [
-      {
-        "code": "P1",
-        "greens": [
-          {
-            "directionCode": "H1",
-            "turn": "left"
-          },
-          {
-            "directionCode": "H1",
-            "turn": "straight"
-          },
-          {
-            "directionCode": "H1",
             "turn": "right"
           }
         ]
@@ -3097,6 +2775,18 @@
           {
             "directionCode": "H2",
             "turn": "straight"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
           }
         ]
       },
@@ -3114,6 +2804,18 @@
           {
             "directionCode": "H3",
             "turn": "left"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H4",
+            "turn": "right"
           }
         ]
       },
@@ -3130,6 +2832,18 @@
           },
           {
             "directionCode": "H4",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H1",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H2",
+            "turn": "right"
+          },
+          {
+            "directionCode": "H3",
             "turn": "right"
           }
         ]
